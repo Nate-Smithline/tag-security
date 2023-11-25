@@ -107,16 +107,21 @@ Role: Leverage containerd for deploying, managing, and orchestrating containeriz
 Interaction: Engage with containerd through various interfaces and tools, contributing to the widespread adoption and integration of containerized solutions.
 
 ### Actions
-These are the steps that a project performs in order to provide some service
-or functionality.  These steps are performed by different actors in the system.
-Note, that an action need not be overly descriptive at the function call level.  
-It is sufficient to focus on the security checks performed, use of sensitive 
-data, and interactions between actors to perform an action.  
-
-For example, the access server receives the client request, checks the format, 
-validates that the request corresponds to a file the client is authorized to 
-access, and then returns a token to the client.  The client then transmits that 
-token to the file server, which, after confirming its validity, returns the file.
+**1. Container Lifecycle Management:**
+Description: Orchestrates the complete lifecycle of containers, covering creation, initialization, termination, and removal.
+Significance: Acts as the backbone of container orchestration, ensuring the smooth execution of containerized applications throughout their lifecycle.
+**2. Image Operations:**
+Description: Manages various image-related operations, including pulling images from repositories, pushing images to registries, and handling image metadata.
+Significance: Central to image management within the container ecosystem, enabling efficient distribution and storage of container images.
+**3. Resource Isolation and Management:**
+Description: Enforces robust resource isolation for individual containers, including CPU, memory, and network resources.
+Significance: Optimizes resource utilization, preventing interference between containers and ensuring performance isolation.
+**4. Network Configuration:**
+Description: Configures and manages network settings for containers, facilitating communication and maintaining network isolation.
+Significance: Ensures effective container communication while safeguarding against security vulnerabilities through proper network segmentation.
+**5. Security Implementation:**
+Description: Implements comprehensive security measures within containers, covering access controls, encrypted communication, and permission management.
+Significance: Strengthens the overall security posture of containerized applications, mitigating potential vulnerabilities and ensuring secure execution.
 
 ### Goals
 The intended goals of the projects including the security guarantees the project
