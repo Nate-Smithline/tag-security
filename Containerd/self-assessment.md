@@ -124,15 +124,30 @@ Description: Implements comprehensive security measures within containers, cover
 Significance: Strengthens the overall security posture of containerized applications, mitigating potential vulnerabilities and ensuring secure execution.
 
 ### Goals
-The intended goals of the projects including the security guarantees the project
- is meant to provide (e.g., Flibble only allows parties with an authorization
-key to change data it stores).
+**1. Component Independence:**
+Components should not have tight dependencies on each other, allowing them to be used independently while maintaining a natural flow when used together.
+**2. Primitives over Abstractions:**
+Containerd should expose primitives to solve problems instead of building high-level abstractions in the API. This allows flexibility for higher-level implementations.
+**3. Extensibility:**
+Containerd should provide defined extension points for various components, allowing alternative implementations to be swapped. For example, it uses runc as the default runtime but supports other runtimes conforming to the OCI Runtime specification.
+**4. Defaults:**
+Containerd comes with default implementations for various components, chosen by maintainers. These defaults should only change if better technology emerges.
+**5. Scope Clarity:**
+The project scope is clearly defined, and any changes require a 100% vote from all maintainers. The whitelist approach ensures that anything not mentioned in scope is considered out of scope.
 
 ### Non-goals
-Non-goals that a reasonable reader of the project’s literature could believe may
-be in scope (e.g., Flibble does not intend to stop a party with a key from storing
-an arbitrarily large amount of data, possibly incurring financial cost or overwhelming
- the servers)
+**1. Component Tight Coupling:**
+Components should not have tight dependencies, promoting independence.
+**2. High-Level Abstractions in API:**
+Avoid building high-level abstractions in the API, focus on exposing primitives.
+**3. Acceptance of Additional Implementations:**
+Additional implementations for core components should not be accepted into the core repository and should be developed separately.
+**4. Build as a First-Class API:**
+Building images is considered a higher-level feature and is out of scope.
+**5. Volume Management:**
+Volume management for external data is out of scope. The API supports mounts, binds, etc., allowing different volume systems to be built on top.
+**6. Logging Persistence:**
+Logging persistence is considered out of scope. Clients can handle and persist container STDIO as needed.
 
 ## Self-assessment use
 
