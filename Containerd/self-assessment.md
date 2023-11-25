@@ -51,9 +51,7 @@ use the table below as an example:
 
 ## Overview
 
-One or two sentences describing the project -- something memorable and accurate
-that distinguishes your project to quickly orient readers who may be assessing
-multiple projects.
+Containerd is a Cloud Native Computing Foundation (CNCF) Project focused on providing the core functionalities for container orchestration. Specifically architected to focus on modularity and compatibility, this provides a secure and minimal approach making it a great option for integrating into different container systems. 
 
 ### Background
 
@@ -61,14 +59,24 @@ Provide information for reviewers who may not be familiar with your project's
 domain or problem area.
 
 ### Actors
-These are the individual parts of your system that interact to provide the 
-desired functionality.  Actors only need to be separate, if they are isolated
-in some way.  For example, if a service has a database and a front-end API, but
-if a vulnerability in either one would compromise the other, then the distinction
-between the database and front-end is not relevant.
-
-The means by which actors are isolated should also be described, as this is often
-what prevents an attacker from moving laterally after a compromise.
+**1. Containerd Core:**
+Role: Serves as the core orchestration engine, managing the execution of container-related actions.
+Significance: Defines the fundamental behavior of the container runtime, providing the essential framework for container management.
+**2. Container Runtimes:**
+Role: Executes containers based on specifications provided by containerd, interacting directly with the underlying operating system.
+Significance: Key players responsible for translating container configurations into actual running instances, ensuring compatibility and adherence to standards.
+**3. Image Registries:**
+Role: Acts as repositories for container images, collaborating with containerd in tasks such as image pulling, pushing, and managing metadata.
+Significance: Critical components for image distribution, storage, and retrieval, forming a pivotal part of the containerized ecosystem.
+**4. System Administrators:**
+Role: Configures, monitors, and maintains containerd in the broader system context, overseeing its integration into the overall infrastructure.
+Responsibilities: Involves setup, continuous monitoring, optimization, and troubleshooting of containerd to ensure seamless operation.
+**5. Developers/Contributors:**
+Role: Actively contributes to the containerd project through codebase enhancements, bug fixes, and feature development.
+Responsibilities: Shapes the evolution of containerd, addressing issues, introducing improvements, and ensuring the project's ongoing robustness.
+**6. End Users:**
+Role: Leverage containerd for deploying, managing, and orchestrating containerized applications.
+Interaction: Engage with containerd through various interfaces and tools, contributing to the widespread adoption and integration of containerized solutions.
 
 ### Actions
 These are the steps that a project performs in order to provide some service
