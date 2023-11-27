@@ -159,15 +159,28 @@ This document provides the CNCF TAG-Security with an initial understanding of Co
 
 ## Security functions and features
 
-* Critical.  A listing critical security components of the project with a brief
-description of their importance.  It is recommended these be used for threat modeling.
-These are considered critical design elements that make the product itself secure and
-are not configurable.  Projects are encouraged to track these as primary impact items
-for changes to the project.
-* Security Relevant.  A listing of security relevant components of the project with
-  brief description.  These are considered important to enhance the overall security of
-the project, such as deployment configurations, settings, etc.  These should also be
-included in threat modeling.
+#### Critical
+**1. Namespaces**
+Namespaces creates more security and efficiency by allowing multiple consumers to use the same containerd without conflicts. It has the benefit of separation of containers and images, while sharing content. 
+
+**2. Capabilities**
+Containerd pushes toward a least-privilege process for managing access. This limits kernel capabilities for processes. Other systems with less least-privilege could create vulnerabilities and increase their attack surfaces.
+
+**3. Isolation**
+With its capability systems and namespaces, containerd provides industry standard resource isolation, ensuring the resources remain isolated and secured.
+
+**4. Modularity**
+Containerd allows people to use different container systems. This gives users of containerd authority over runtimes, but if not properly handled, could lead to severe access
+
+#### Security Relevant
+**1. Plug-ins**
+Containerd allows external plugins like AppArmor and Seccomp which can decrease the attack surface of the container management. However, this also creates separate challenges not managable directly from a Containerd implementation.
+
+**2. Network Security**
+Containerd allows for network isolation, helping lockdown containers with network changes. This prevents unauthorzed communication, but needs to be monitored properly
+
+**3. Trust**
+Containerd only stores identical content once, reducing risk of storing multiple copies of vulnerable content, thereby reducing the attack surface. If more things are uploaded, this needs to be monitored as it has a big effect on the attack surface.
 
 ## Project compliance
 Containerd is not documented as meeting any major security standards except for having bypassed a test in fuzzing. The testing done by Adacompliance deemed that the fuzzing prevention was strong and with further testing was incredibly robust for industry application.
