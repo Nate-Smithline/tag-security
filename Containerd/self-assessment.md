@@ -170,9 +170,9 @@ the project, such as deployment configurations, settings, etc.  These should als
 included in threat modeling.
 
 ## Project compliance
+Containerd is not documented as meeting any major security standards except for having bypassed a test in fuzzing. The testing done by Adacompliance deemed that the fuzzing prevention was strong and with further testing was incredibly robust for industry application.
 
-* Compliance.  List any security standards or sub-sections the project is
-  already documented as meeting (PCI-DSS, COBIT, ISO, GDPR, etc.).
+It is reasonable to suggest its minimal framework could support CIS Benchmarks on least privilege and access control policies in ISO. However, there is no public documentation with proof to having matched any of these requirements. 
 
 ## Secure development practices
 
