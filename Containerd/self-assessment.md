@@ -188,23 +188,28 @@ Containerd is not documented as meeting any major security standards except for 
 It is reasonable to suggest its minimal framework could support CIS Benchmarks on least privilege and access control policies in ISO. However, there is no public documentation with proof to having matched any of these requirements. 
 
 ## Secure development practices
+**Development pipeline:**
+Containerd contributors must sign commits to ensure contributor identity and prevent unauthorized code changes.  
+Containerd images are immutable and signed. Additionally, all images are signed with a GPG key, which helps to verify the authenticity of the image.
+Continuous integration and deployment pipelines automatically test all changes in Containerd, enabling prompt issue detection. 
+The open-source code, hosted on GitHub, encourages transparency and community involvement in reviews, aiding in early issue detection.
+All pull requests to the containerd codebase must be reviewed by at least two reviewers before they can be merged.
+Compliant with industry standards, including NIST SP 800-190 and CIS Docker Benchmark, Containerd prioritizes security and reliability benchmarks. It integrates with image scanning tools (Clair, Synk, Trivy, etc.), promoting trusted image registries.
+Containerd employs privilege-dropping techniques, supports Seccomp profiles, and can operate in unprivileged user mode to minimize attack surfaces and limit security impact. 
+Resource quotas and cgroups enforce fair resource allocation, preventing resource exhaustion attacks in Containerd.
+TLS encryption safeguards data exchange, and secure networking configurations and communication protocols protect against unauthorized access. 
+The use of secure communication protocols, such as HTTPS, when communicating with external services to protect data from exposure is also promoted.
+Security audits occur regularly (CNCF fuzzing audit, community-driven audits, etc.) complemented by a responsible disclosure policy for discreetly reporting and addressing security issues before public disclosure.
+Containerd releases updates with security patches, performance enhancements, and bug fixes, while comprehensive documentation guides secure deployment (https://containerd.io/docs/).
 
-* Development Pipeline.  A description of the testing and assessment processes that
-  the software undergoes as it is developed and built. Be sure to include specific
-information such as if contributors are required to sign commits, if any container
-images immutable and signed, how many reviewers before merging, any automated checks for
-vulnerabilities, etc.
-* Communication Channels. Reference where you document how to reach your team or
-  describe in corresponding section.
-  * Internal. How do team members communicate with each other?
-  * Inbound. How do users or prospective users communicate with the team?
-  * Outbound. How do you communicate with your users? (e.g. flibble-announce@
-    mailing list)
-* Ecosystem. How does your software fit into the cloud native ecosystem?  (e.g.
-  Flibber is integrated with both Flocker and Noodles which covers
-virtualization for 80% of cloud users. So, our small number of "users" actually
-represents very wide usage across the ecosystem since every virtual instance uses
-Flibber encryption by default.)
+**Communication Channels:**
+Internal: The Containerd team mostly communicates with each other through Slack, GitHub, or email lists internally.
+Inbound: Prospective and existing users can communicate with the Containerd team through GitHub issues, mailing lists, or the dedicated Slack channel.
+Outbound: The containerd team communicates with its users through the containerd blog, social media channels such as Twitter and GitHub, and through mailing lists.
+
+**Ecosystem:**
+Containerd plays a pivotal role in the cloud-native ecosystem due to its core functionality as a lightweight container runtime, its integration with various container orchestration platforms, and its active participation in open-source projects. This makes it an essential component for building, deploying, and managing scalable and reliable cloud-native applications.
+
 
 ## Security issue resolution
 
