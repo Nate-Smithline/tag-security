@@ -34,9 +34,9 @@ A table at the top for quick reference information, later used for indexing.
 
 |   |  |
 | -- | -- |
-| Software | A link to the software’s repository.  |
-| Security Provider | Yes or No. Is the primary function of the project to support the security of an integrating system?  |
-| Languages | languages the project is written in |
+| Software | https://github.com/containerd/containerd  |
+| Security Provider | No  |
+| Languages | Go, C++ |
 | SBOM | Software bill of materials.  Link to the libraries, packages, versions used by the project, may also include direct dependencies. |
 | | |
 
@@ -87,65 +87,87 @@ As an open-source project under the Cloud Native Computing Foundation (CNCF), Co
 Containerd serves as a crucial foundation in the container ecosystem, providing a dependable and standardized runtime for containers. Its modular architecture, robust features, and strong community support contribute to its widespread adoption in container orchestration platforms and deployments of containerized applications.
 
 ### Actors
+
 **1. Containerd Core:**
 Role: Serves as the core orchestration engine, managing the execution of container-related actions.
 Significance: Defines the fundamental behavior of the container runtime, providing the essential framework for container management.
+
 **2. Container Runtimes:**
 Role: Executes containers based on specifications provided by containerd, interacting directly with the underlying operating system.
 Significance: Key players responsible for translating container configurations into actual running instances, ensuring compatibility and adherence to standards.
+
 **3. Image Registries:**
 Role: Acts as repositories for container images, collaborating with containerd in tasks such as image pulling, pushing, and managing metadata.
 Significance: Critical components for image distribution, storage, and retrieval, forming a pivotal part of the containerized ecosystem.
+
 **4. System Administrators:**
 Role: Configures, monitors, and maintains containerd in the broader system context, overseeing its integration into the overall infrastructure.
 Responsibilities: Involves setup, continuous monitoring, optimization, and troubleshooting of containerd to ensure seamless operation.
+
 **5. Developers/Contributors:**
 Role: Actively contributes to the containerd project through codebase enhancements, bug fixes, and feature development.
 Responsibilities: Shapes the evolution of containerd, addressing issues, introducing improvements, and ensuring the project's ongoing robustness.
+
 **6. End Users:**
 Role: Leverage containerd for deploying, managing, and orchestrating containerized applications.
 Interaction: Engage with containerd through various interfaces and tools, contributing to the widespread adoption and integration of containerized solutions.
 
 ### Actions
+
 **1. Container Lifecycle Management:**
 Description: Orchestrates the complete lifecycle of containers, covering creation, initialization, termination, and removal.
 Significance: Acts as the backbone of container orchestration, ensuring the smooth execution of containerized applications throughout their lifecycle.
+
 **2. Image Operations:**
 Description: Manages various image-related operations, including pulling images from repositories, pushing images to registries, and handling image metadata.
 Significance: Central to image management within the container ecosystem, enabling efficient distribution and storage of container images.
+
 **3. Resource Isolation and Management:**
 Description: Enforces robust resource isolation for individual containers, including CPU, memory, and network resources.
 Significance: Optimizes resource utilization, preventing interference between containers and ensuring performance isolation.
+
 **4. Network Configuration:**
 Description: Configures and manages network settings for containers, facilitating communication and maintaining network isolation.
 Significance: Ensures effective container communication while safeguarding against security vulnerabilities through proper network segmentation.
+
 **5. Security Implementation:**
 Description: Implements comprehensive security measures within containers, covering access controls, encrypted communication, and permission management.
 Significance: Strengthens the overall security posture of containerized applications, mitigating potential vulnerabilities and ensuring secure execution.
 
 ### Goals
+
 **1. Component Independence:**
 Components should not have tight dependencies on each other, allowing them to be used independently while maintaining a natural flow when used together.
+
 **2. Primitives over Abstractions:**
 Containerd should expose primitives to solve problems instead of building high-level abstractions in the API. This allows flexibility for higher-level implementations.
+
 **3. Extensibility:**
 Containerd should provide defined extension points for various components, allowing alternative implementations to be swapped. For example, it uses runc as the default runtime but supports other runtimes conforming to the OCI Runtime specification.
+
 **4. Defaults:**
 Containerd comes with default implementations for various components, chosen by maintainers. These defaults should only change if better technology emerges.
+
 **5. Scope Clarity:**
 The project scope is clearly defined, and any changes require a 100% vote from all maintainers. The whitelist approach ensures that anything not mentioned in scope is considered out of scope.
 
 ### Non-goals
+
 **1. Component Tight Coupling:**
 Components should not have tight dependencies, promoting independence.
+
 **2. High-Level Abstractions in API:**
 Avoid building high-level abstractions in the API, focus on exposing primitives.
+
 **3. Acceptance of Additional Implementations:**
 Additional implementations for core components should not be accepted into the core repository and should be developed separately.
+
 **4. Build as a First-Class API:**
 Building images is considered a higher-level feature and is out of scope.
+
 **5. Volume Management:**
 Volume management for external data is out of scope. The API supports mounts, binds, etc., allowing different volume systems to be built on top.
+
 **6. Logging Persistence:**
 Logging persistence is considered out of scope. Clients can handle and persist container STDIO as needed.
 
@@ -160,6 +182,7 @@ This document provides the CNCF TAG-Security with an initial understanding of Co
 ## Security functions and features
 
 #### Critical
+
 **1. Namespaces**
 Namespaces creates more security and efficiency by allowing multiple consumers to use the same containerd without conflicts. It has the benefit of separation of containers and images, while sharing content. 
 
@@ -188,26 +211,43 @@ Containerd is not documented as meeting any major security standards except for 
 It is reasonable to suggest its minimal framework could support CIS Benchmarks on least privilege and access control policies in ISO. However, there is no public documentation with proof to having matched any of these requirements. 
 
 ## Secure development practices
+
 **Development pipeline:**
+
 Containerd contributors must sign commits to ensure contributor identity and prevent unauthorized code changes.  
+
 Containerd images are immutable and signed. Additionally, all images are signed with a GPG key, which helps to verify the authenticity of the image.
+
 Continuous integration and deployment pipelines automatically test all changes in Containerd, enabling prompt issue detection. 
+
 The open-source code, hosted on GitHub, encourages transparency and community involvement in reviews, aiding in early issue detection.
+
 All pull requests to the containerd codebase must be reviewed by at least two reviewers before they can be merged.
+
 Compliant with industry standards, including NIST SP 800-190 and CIS Docker Benchmark, Containerd prioritizes security and reliability benchmarks. It integrates with image scanning tools (Clair, Synk, Trivy, etc.), promoting trusted image registries.
+
 Containerd employs privilege-dropping techniques, supports Seccomp profiles, and can operate in unprivileged user mode to minimize attack surfaces and limit security impact. 
+
 Resource quotas and cgroups enforce fair resource allocation, preventing resource exhaustion attacks in Containerd.
+
 TLS encryption safeguards data exchange, and secure networking configurations and communication protocols protect against unauthorized access. 
+
 The use of secure communication protocols, such as HTTPS, when communicating with external services to protect data from exposure is also promoted.
+
 Security audits occur regularly (CNCF fuzzing audit, community-driven audits, etc.) complemented by a responsible disclosure policy for discreetly reporting and addressing security issues before public disclosure.
+
 Containerd releases updates with security patches, performance enhancements, and bug fixes, while comprehensive documentation guides secure deployment (https://containerd.io/docs/).
 
 **Communication Channels:**
+
 Internal: The Containerd team mostly communicates with each other through Slack, GitHub, or email lists internally.
+
 Inbound: Prospective and existing users can communicate with the Containerd team through GitHub issues, mailing lists, or the dedicated Slack channel.
+
 Outbound: The containerd team communicates with its users through the containerd blog, social media channels such as Twitter and GitHub, and through mailing lists.
 
 **Ecosystem:**
+
 Containerd plays a pivotal role in the cloud-native ecosystem due to its core functionality as a lightweight container runtime, its integration with various container orchestration platforms, and its active participation in open-source projects. This makes it an essential component for building, deploying, and managing scalable and reliable cloud-native applications.
 
 
