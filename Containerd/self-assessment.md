@@ -208,15 +208,11 @@ Flibber encryption by default.)
 
 ## Security issue resolution
 
-* Responsible Disclosures Process. A outline of the project's responsible
-  disclosures process should suspected security issues, incidents, or
-vulnerabilities be discovered both external and internal to the project. The
-outline should discuss communication methods/strategies.
-  * Vulnerability Response Process. Who is responsible for responding to a
-    report. What is the reporting process? How would you respond?
-* Incident Response. A description of the defined procedures for triage,
-  confirmation, notification of vulnerability or security incident, and
-patching/update availability.
+* Responsible Disclosures Process: The responsible disclosure process for containerd is designed to manage the identification of security issues, incidents, or vulnerabilities, whether discovered internally or externally. If a security issue is found within the project team, it is reported using the same procedures as external reports. External discoveries are encouraged to follow a responsible disclosure process, which involves reporting the issue either on GitHub or via email. GitHub is the primary platform, allowing individuals to navigate to the security tab, access the Advisories tab, and use the "Report a vulnerability" option. Alternatively, an email can be sent to security@containerd.io, including details of the issue and steps to reproduce. Reporters should anticipate an acknowledgment within 24 hours and are advised to contact any committer directly if there's no response.
+
+  * Vulnerability Response Process: The responsibility for responding to a reported vulnerability rests with the committers of containerd. Once a committer confirms the relevance of the reported vulnerability, a draft security advisory is created on GitHub. Reports can be submitted through GitHub or via email to security@containerd.io. Reporters interested in participating in the discussion can provide their GitHub usernames for an invitation. Alternatively, they can opt to receive updates via email. If the vulnerability is accepted, a timeline for developing a patch, public disclosure, and patch release is established. In cases where an embargo period precedes public disclosure, an announcement is sent to the security announce mailing list, detailing the vulnerability scope, patch release date, and public disclosure date. Reporters are expected to engage in the discussion of the timeline and adhere to agreed-upon dates for public disclosure.
+
+* Incident Response: Defined procedures are in place for triaging reported vulnerabilities, assessing their severity and relevance. The confirmation process involves validating the reported vulnerability to determine its authenticity and impact. If the vulnerability is confirmed, the involved parties, including the reporter(s), are notified. A timeline for developing a patch and making updates available is determined. Depending on the embargo period, the vulnerability and patch release details are publicly disclosed using the security announce mailing list. Reporters are expected to comply with agreed-upon dates for public disclosure, ensuring a responsible and coordinated release of information. This process ensures a systematic and transparent approach to handling security issues, promoting responsible disclosure, and achieving timely resolution.
 
 ## Appendix
 
